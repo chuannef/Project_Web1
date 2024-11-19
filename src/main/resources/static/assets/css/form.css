@@ -1,0 +1,187 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #fff;
+}
+.book-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.header .logo span {
+    color: #e74c3c;
+}
+.header .icons {
+    font-size: 18px;
+}
+.header .icons i {
+    margin: 0 10px;
+    cursor: pointer;
+}
+.navbar {
+    background-color: #e74c3c;
+    padding: 10px 50px;
+}
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbar ul li {
+    margin: 0 15px;
+    position: relative;
+}
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+.navbar ul li ul {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #e74c3c;
+    padding: 10px;
+    list-style: none;
+}
+.navbar ul li:hover ul {
+    display: block;
+}
+.hero {
+    position: relative;
+    text-align: left;
+}
+.hero img {
+    width: 100%;
+    height: auto;
+}
+.hero .content {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    color: #000;
+}
+.hero .content h1 {
+    font-size: 48px;
+    margin: 0;
+    color: #e74c3c;
+}
+.hero .content p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.hero .content .btn {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Container Section */
+.container {
+    width: 80%;
+    margin: 40px auto;
+}
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+h1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #c00;
+    margin: 10px auto;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.filter-buttons button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+.filter-buttons button.active, .filter-buttons button:hover {
+    background-color: #c00;
+    color: #fff;
+}
+
+/* Book List Section */
+.book-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Khoảng cách giữa các mục sách */
+}
+.book-item {
+    width: 23%; /* Chiều rộng cố định để đảm bảo đồng đều */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.img-flui {
+    width: 100%; /* Chiều rộng đầy đủ container */
+    height: 250px; /* Chiều cao cố định */
+    object-fit: cover; /* Giữ tỷ lệ hình ảnh */
+    border-radius: 8px; /* Bo góc hình ảnh */
+}
+.book-item h3, .book-item p {
+    margin: 10px 0;
+    text-align: center;
+}
+.book-item .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e74c3c;
+}
+.book-item .old-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 5px;
+}
+
+/* Footer Section */
+footer {
+    background-color: #e74c3c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 14px;
+}

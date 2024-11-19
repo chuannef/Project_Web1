@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title th:text="${novel.title}">Novel Detail</title>
+    <link rel="stylesheet" href="/assets/css/detail.css">
+</head>
+<body>
+<div class="novel-detail">
+    <img th:src="@{'/images/' + ${novel.image}}" alt="Book Image">
+    <h1 th:text="${novel.title}"></h1>
+    <p th:text="${novel.description}"></p>
+    <h3>Author: <span th:text="${novel.author.name}"></span></h3>
+    <h4>Genre: <span th:text="${novel.genre}"></span></h4>
+    <a href="/novels" class="btn">Back to List</a>
+</div>
+</body>
+</html>

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface NovelRepository extends JpaRepository<Novel, Long> {
 //    @Query("SELECT * FROM novel WHERE genre LIKE %:genre%")
     List<Novel> findNovelsByGenre(String genre) ;

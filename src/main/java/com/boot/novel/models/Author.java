@@ -24,7 +24,7 @@ public class Author {
     @Column(name = "biography")
     private String biography;
 
-//    @OneToMany(mappedBy = "author")
-//    private Set<Novel> novels = new LinkedHashSet<>();
-
+    private String image;
+    private String title;
+    private String date;
 }

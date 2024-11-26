@@ -1,6 +1,8 @@
 package com.boot.novel.controllers;
 
+import com.boot.novel.models.Author;
 import com.boot.novel.models.Novel;
+import com.boot.novel.services.AuthorService;
 import com.boot.novel.services.NovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,16 @@ public class NovelController {
 
     @Autowired
     private NovelService novelService;
+    @Autowired
+    private AuthorService authorService;
 
-    // Hiển thị danh sách các tiểu thuyết
+    // Hiển thị danh sách các tiểu thuyết và tác giả
     @GetMapping
     public String getAllNovels(Model model) {
         List<Novel> novels = novelService.getAllNovels();
+        List<Author> authors = authorService.getAllAuthors();
         model.addAttribute("novels", novels);
+        model.addAttribute("authors", authors);
         return "form"; // Trả về trang danh sách
     }
 

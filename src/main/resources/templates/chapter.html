@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Chapter Detail</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="chapter-detail">
+    <h1 th:text="${chapter.title}"></h1>
+    <p th:text="${chapter.content}"></p>
+    <div class="meta">
+        <span>Ngày đăng: <span th:text="${chapter.datePublished}"></span></span>
+    </div>
+    <a href="/novels" class="btn">Quay lại danh sách</a>
+</div>
+</body>
+</html>

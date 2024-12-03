@@ -10,7 +10,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+
+// import org.springframework.security.authentication.AuthenticationProvider;
+// import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 
 @Configuration
 @EnableWebSecurity
@@ -26,29 +30,28 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
-                                .requestMatchers("/index").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
-                ).formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
-                                .permitAll()
-                ).logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .permitAll()
-                );
-        return http.build();
+            return http.csrf(AbstractHttpConfigurer::disable)
+                    .authorizeHttpRequests(
+                                    (requests) ->
+                                    requests
+                                    .requestMatchers("/register/**", "/index").permitAll()
+                                    .requestMatchers("/users").hasRole("ADMIN"))
+                    .formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/users").permitAll())
+                    .logout(LogoutConfigurer::permitAll)
+                    .build();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+    // @Bean
+    // AuthenticationProvider provider() {
+    //     DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+    //     daoAuthenticationProvider.setUserDetailsService(customUserDetails);
+    //     daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+
+    //     return daoAuthenticationProvider;
+    // }
 }

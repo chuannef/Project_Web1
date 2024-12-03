@@ -28,18 +28,21 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
+                        authorize.requestMatchers("/register/**").permitAll() // Cho phép truy cập không cần login
                                 .requestMatchers("/index").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
-                ).formLogin(
+                                .requestMatchers("/novels/**").permitAll() // Thêm quyền truy cập cho /novels
+                                .requestMatchers("/users").hasRole("ADMIN") // Chỉ admin được truy cập
+                )
+                .formLogin(
                         form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .loginPage("/login") // Trang login
+                                .loginProcessingUrl("/login") // Xử lý login
+                                .defaultSuccessUrl("/users") // Sau khi login thành công
                                 .permitAll()
-                ).logout(
+                )
+                .logout(
                         logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // URL logout
                                 .permitAll()
                 );
         return http.build();

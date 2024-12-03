@@ -30,15 +30,15 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            return http.csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(
-                                    (requests) ->
-                                    requests
-                                    .requestMatchers("/register/**", "/index").permitAll()
-                                    .requestMatchers("/users").hasRole("ADMIN"))
-                    .formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/users").permitAll())
-                    .logout(LogoutConfigurer::permitAll)
-                    .build();
+        return http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(
+                    (requests) ->
+                    requests
+                    .requestMatchers("/register/**", "/index").permitAll()
+                    .requestMatchers("/users").hasRole("ADMIN"))
+            .formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/users").permitAll())
+            .logout(LogoutConfigurer::permitAll)
+            .build();
     }
 
     @Autowired

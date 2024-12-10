@@ -5,7 +5,6 @@ import com.boot.novel.repository.NovelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +13,9 @@ public class NovelService {
 
     @Autowired
     private NovelRepository novelRepository;
+
+    @Autowired
+    private LikeService likeService; // Inject LikeService
 
     // Lấy tất cả tiểu thuyết
     public List<Novel> getAllNovels() {
@@ -37,7 +39,22 @@ public class NovelService {
     }
 
     public List<Novel> getNovelsByGenre(String genre) {
-        List<Novel> novels = novelRepository.findNovelsByGenre(genre);
-        return novels;
+        return novelRepository.findNovelsByGenre(genre);
+    }
+
+    public List<Novel> getLikedNovels() {
+        return likeService.getLikedNovels(); // Sử dụng LikeService để lấy danh sách yêu thích
+    }
+
+    public void addToLikedNovels(Novel novel) {
+        likeService.addToLikedNovels(novel); // Sử dụng LikeService để thêm vào danh sách yêu thích
+    }
+
+    public void removeFromLikedNovels(Long novelId) {
+        likeService.removeFromLikedNovels(novelId); // Sử dụng LikeService để xóa khỏi danh sách yêu thích
+    }
+
+    public void updateLikedNovel(Long novelId, Novel updatedNovel) {
+        likeService.updateLikedNovel(novelId, updatedNovel); // Sử dụng LikeService để cập nhật danh sách yêu thích
     }
 }

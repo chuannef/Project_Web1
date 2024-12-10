@@ -1,223 +1,56 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>
-        Book Shop
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .newsletter {
-            background-color: #f5f5f5;
-            text-align: center;
-            padding: 50px 0;
-        }
-        .newsletter h2 {
-            color: #e74c3c;
-            font-size: 24px;
-            margin: 0;
-        }
-        .newsletter p {
-            color: #7f8c8d;
-            font-size: 14px;
-            margin: 10px 0 20px;
-        }
-        .newsletter input[type="email"] {
-            padding: 10px;
-            border: 1px solid #e74c3c;
-            width: 300px;
-            margin-right: 10px;
-        }
-        .newsletter button {
-            padding: 10px 20px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .footer {
-            background-color: #2c2c2c;
-            color: #fff;
-            padding: 50px 0;
-            position: relative;
-        }
-        .footer .container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer .column {
-            flex: 1;
-            margin: 0 20px;
-        }
-        .footer .column h3 {
-            color: #e74c3c;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .footer .column p, .footer .column a {
-            color: #fff;
-            font-size: 14px;
-            line-height: 1.8;
-            text-decoration: none;
-        }
-        .footer .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .footer .social-icons a {
-            color: #fff;
-            font-size: 20px;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .footer .payment-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .footer .payment-icons img {
-            margin: 0 5px;
-        }
-        .footer .book-icon {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-        }
-        .footer .book-icon img {
-            width: 50px;
-        }
-        .footer .copyright {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-        }
-    </style>
+    <link href="/assets/css/back.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="newsletter">
-    <h2>
-        SUBSCRIBE TO OUR NEWS LETTER
-    </h2>
-    <p>
-        Enter your email address to receive regular updates, as well as news on upcoming events and specific offers.
-    </p>
+    <h2>SUBSCRIBE TO OUR NEWS LETTER</h2>
+    <p>Enter your email address to receive regular updates, as well as news on upcoming events and specific offers.</p>
     <input placeholder="Email Address" type="email"/>
-    <button>
-        Subscribe
-    </button>
+    <button>Subscribe</button>
 </div>
+
 <div class="footer">
     <div class="container">
         <div class="column">
-            <h3>
-                BOOK SHOP
-            </h3>
-            <p>
-                1203 Town Center
-                <br/>
-                Drive FL 33458 USA
-                <br/>
-                +0000 123 456 789
-                <br/>
-                info@example.com
-            </p>
+            <h3>BOOK SHOP</h3>
+            <p>1203 Town Center Drive FL 33458 USA<br>+0000 123 456 789<br>info@example.com</p>
         </div>
         <div class="column">
-            <h3>
-                Help
-            </h3>
-            <a href="#">
-                Search
-            </a>
-            <br/>
-            <a href="#">
-                Help
-            </a>
-            <br/>
-            <a href="#">
-                Information
-            </a>
-            <br/>
-            <a href="#">
-                Privacy Policy
-            </a>
-            <br/>
-            <a href="#">
-                Shipping Information
-            </a>
+            <h3>Help</h3>
+            <a href="#">Search</a><br>
+            <a href="#">Help</a><br>
+            <a href="#">Information</a><br>
+            <a href="#">Privacy Policy</a><br>
+            <a href="#">Shipping Information</a>
         </div>
         <div class="column">
-            <h3>
-                Support
-            </h3>
-            <a href="#">
-                Search Terms
-            </a>
-            <br/>
-            <a href="#">
-                Advanced Search
-            </a>
-            <br/>
-            <a href="#">
-                Helps &amp; Faqs
-            </a>
-            <br/>
-            <a href="#">
-                Store Location
-            </a>
-            <br/>
-            <a href="#">
-                Orders &amp; Returns
-            </a>
+            <h3>Support</h3>
+            <a href="#">Search Terms</a><br>
+            <a href="#">Advanced Search</a><br>
+            <a href="#">Helps &amp; Faqs</a><br>
+            <a href="#">Store Location</a><br>
+            <a href="#">Orders &amp; Returns</a>
         </div>
         <div class="column">
-            <h3>
-                Information
-            </h3>
-            <a href="#">
-                Contact
-            </a>
-            <br/>
-            <a href="#">
-                About
-            </a>
-            <br/>
-            <a href="#">
-                Carers
-            </a>
-            <br/>
-            <a href="#">
-                Refund &amp; Returns
-            </a>
-            <br/>
-            <a href="#">
-                Deliveries
-            </a>
+            <h3>Information</h3>
+            <a href="#">Contact</a><br>
+            <a href="#">About</a><br>
+            <a href="#">Carers</a><br>
+            <a href="#">Refund &amp; Returns</a><br>
+            <a href="#">Deliveries</a>
         </div>
     </div>
     <div class="social-icons">
-        <a href="#">
-            <i class="fab fa-facebook-f">
-            </i>
-        </a>
-        <a href="#">
-            <i class="fab fa-twitter">
-            </i>
-        </a>
-        <a href="#">
-            <i class="fab fa-pinterest-p">
-            </i>
-        </a>
-        <a href="#">
-            <i class="fab fa-instagram">
-            </i>
-        </a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
     <div class="payment-icons">
         <img alt="Visa" height="25" src="https://storage.googleapis.com/a1aa/image/db62FDKexMWeCE2cYVgpfdsVznMEX9BBCiE0m11EKv5aECjnA.jpg" width="40"/>

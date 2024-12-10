@@ -5,6 +5,8 @@ import com.boot.novel.repository.ChapterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ChapterService {
 
@@ -14,6 +16,10 @@ public class ChapterService {
     // Lấy chương theo tiểu thuyết và số chương
     public Chapter getChapterByNovelAndNumber(Long novelId, int chapterNumber) {
         return chapterRepository.findByNovelIdAndChapterNumber(novelId, chapterNumber);
+    }
+
+    public Optional<Chapter> getChapterById(Long chapterId) {
+        return chapterRepository.findById(chapterId);
     }
 
     // Lưu chương mới

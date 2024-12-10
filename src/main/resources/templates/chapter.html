@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Chapter Detail</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Content of ep.txt</title>
 </head>
 <body>
-<div class="chapter-detail">
-    <h1 th:text="${chapter.title}"></h1>
-    <p th:text="${chapter.content}"></p>
-    <div class="meta">
-        <span>Ngày đăng: <span th:text="${chapter.datePublished}"></span></span>
-    </div>
-    <a href="/novels" class="btn">Quay lại danh sách</a>
-</div>
+<h1>Chương 1: Hành Trình Bắt Đầu</h1>
+
+<!-- Area to display the file content -->
+<pre id="fileContent">Loading...</pre>
+
+<script>
+    // Fetch the ep.txt file from the server and display its content
+    fetch('/text/chapter.txt') // Replace with your actual path to the file
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load the file.');
+            }
+            return response.text(); // Get the text content of the file
+        })
+        .then(text => {
+            document.getElementById('fileContent').textContent = text; // Display the file content
+        })
+        .catch(error => {
+            document.getElementById('fileContent').textContent = 'Error: ' + error.message; // Show error if any
+        });
+</script>
 </body>
 </html>
+
+<!--    <label>-->
+<!--        <textarea th:text="${chapter.content}"></textarea>-->
+<!--    </label>-->
+<!--    <div class="meta">-->
+
+<!--    </div>-->
+<!--    <a href="/novels" class="btn">Quay lại danh sách</a>-->
+

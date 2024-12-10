@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -28,4 +31,7 @@ public class Novel {
     @JoinColumn(name = "author_id")
     private Author author;
     private String image;
+
+    @OneToMany
+    private List<Chapter> chapters = new ArrayList<>();
 }

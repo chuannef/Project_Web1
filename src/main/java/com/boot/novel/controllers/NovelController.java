@@ -11,10 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("novels")
 public class NovelController {
 
     @Autowired
@@ -36,12 +37,18 @@ public class NovelController {
 
     @GetMapping("/{id}")
     public String getNovelById(@PathVariable Long id, Model model) {
-        Novel novel = novelService.getNovelById(id); // Lấy thông tin truyện theo ID
-        model.addAttribute("novel", novel);         // Thêm thông tin vào model
+        Novel novel = novelService.getNovelById(id); // Retrieve novel by ID
+        if (novel == null) {
+            model.addAttribute("error", "Novel not found.");
+            return "error"; // Redirect to an error page if the novel doesn't exist
+        }
+        model.addAttribute("novel", novel);
 
+        // Optionally, pass author data or related novels
         List<Author> authors = authorService.getAllAuthors();
         model.addAttribute("authors", authors);
-        return "detail"; // Trả về trang detail.html
+
+        return "detail"; // Redirect to 'detail.html'
     }
 
     // Hiển thị form tạo mới tiểu thuyết
@@ -55,7 +62,7 @@ public class NovelController {
     @GetMapping("/delete/{id}")
     public String deleteNovel(@PathVariable Long id) {
         novelService.deleteNovel(id); // Xóa tiểu thuyết theo id
-        return "redirect:/novels"; // Điều hướng về trang danh sách sau khi xóa
+        return "redirect:/"; // Điều hướng về trang danh sách sau khi xóa
     }
 
     // Lọc theo thể loại
@@ -86,5 +93,17 @@ public class NovelController {
         }
 
         return "chapter"; // Trả về trang chapter.html
+    }
+
+    @GetMapping("/novel/chapter/{id}")
+    public String novelDetail(@PathVariable Long id, Model model) {
+//        Chapter chapter = chapterService.getChapterByNovelAndNumber(id, 1);
+        Optional<Chapter> chapter = chapterService.getChapterById(id);
+
+//        List<Chapter> chapters = new ArrayList<>();
+
+        chapter.ifPresent(value -> model.addAttribute("chapter", value));
+
+        return "chapter";
     }
 }

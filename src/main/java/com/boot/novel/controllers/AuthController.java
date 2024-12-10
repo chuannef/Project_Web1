@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@Controller
+@Controller("/login/acount")
 public class AuthController {
 
     private UserService userService;

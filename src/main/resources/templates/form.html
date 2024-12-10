@@ -1,6 +1,9 @@
 <html>
 <head>
     <title>Book Shop</title>
+    <style>
+        /* Style here if needed */
+    </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/form.css">
@@ -10,29 +13,24 @@
 <!-- Header Section -->
 <div class="header">
     <div class="logo">NOVEL <span>BANK</span></div>
-    <div class="icons">
-        <i class="fas fa-shopping-cart"></i>
+    <div class="icons" >
+        <a href="/login">
+        <i class="fas fa-user"></i>
         <i class="fas fa-heart"></i>
         <i class="fas fa-sync-alt"></i>
+        </a>
     </div>
 </div>
 
 <!-- Navbar Section -->
-<div class="navbar">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Novel</a>
-        <li><a href="#">Brands</a></li>
-        <li><a href="#">Best Novel</a></li>
-        <li><a href="#">Pages</a>
-    </ul>
-</div>
+
 
 <!-- Hero Section -->
 <div class="hero">
-        <img src="/images/background.webp" alt="Books" />
-
+    <img src="/images/background.webp" alt="Books" />
 </div>
+
+<!-- Features Section -->
 <div class="dooter">
     <div>
         <i class="fas fa-paper-plane"></i>
@@ -51,20 +49,20 @@
         <p>FREE RETURNS<br />Within 30 Days returns</p>
     </div>
 </div>
+
 <!-- New Arrivals Section -->
 <div class="container">
     <h1>NEW NOVELS</h1>
     <div class="filter-buttons">
-       <button> <a class="active" >All</a></button>
-        <button> <a href="/novels/filter/Fantasy">Fantasy</a></button>
-        <button> <a href="/novels/filter/Dystopian"> Dystopian </a></button>
-        <button> <a href="/novels/filter/Romance">Romance</a></button>
-        <button><a href="/novels/filter/Classic">Classic</a></button>
+        <button><a href="/" class="active">All</a></button>
+        <button><a href="/filter/Fantasy">Fantasy</a></button>
+        <button><a href="/filter/Dystopian">Dystopian</a></button>
+        <button><a href="/filter/Romance">Romance</a></button>
+        <button><a href="/filter/Classic">Classic</a></button>
     </div>
     <div class="book-list">
         <div class="book-item" th:each="novel : ${novels}">
-            <!-- Thẻ liên kết bọc quanh toàn bộ nội dung book-item -->
-            <a th:href="@{/novels/{id}(id=${novel.id})}" class="book-link">
+            <a th:href="@{'/{id}'(id=${novel.id})}" class="book-link">
                 <img class="img-flui" th:src="@{'/images/' + ${novel.image}}" alt="Book Image">
                 <p>New novel</p>
                 <h3 th:text="${novel.title}"></h3>
@@ -74,32 +72,32 @@
     </div>
 </div>
 
-
+<!-- Latest News Section -->
 <div class="container">
     <div class="title">
         LATEST NEWS
     </div>
     <div class="news-grid">
-        <div class="news-item"th:each="author : ${authors}">
+        <div class="news-item" th:each="author : ${authors}">
             <a th:href="@{/authors/{id}(id=${author.id})}" class="book-link">
-                <img class="img-flui" th:src="@{'/images/' + ${author.image}}" >
+                <img class="img-flui" th:src="@{'/images/' + ${author.image}}" alt="Author Image">
+            </a>
             <div class="news-content">
                 <div>
                     <div class="news-meta">
-                        <i th:href="@{/authors/{name}(name=${author.name})}">[[${author.name}]]</i>  <i th:href="@{/authors/{date}(date=${author.date})}">[[${author.date}]]</i>
+                        <span th:text="${author.name}"></span>
+                        <span th:text="${author.date}"></span>
                     </div>
-                    <div class="news-title"></div>
-                    <i th:href="@{/authors/{title}(title=${author.title})}">[[${author.title}]]</i>
-                    <div class="news-description">
-                        <i th:href="@{/authors/{biography}(biography=${author.biography})}">[[${author.biography}]]</i>
-                    </div>
+                    <div class="news-title" th:text="${author.title}"></div>
+                    <div class="news-description" th:text="${author.biography}"></div>
                 </div>
                 <a class="read-more" href="#">Read More</a>
             </div>
         </div>
-</div>
+    </div>
 </div>
 
+<!-- Footer Section -->
 <div th:insert="~{back.html}"></div>
 </body>
 </html>

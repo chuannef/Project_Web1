@@ -42,19 +42,7 @@ public class NovelService {
         return novelRepository.findNovelsByGenre(genre);
     }
 
-    public List<Novel> getLikedNovels() {
-        return likeService.getLikedNovels(); // Sử dụng LikeService để lấy danh sách yêu thích
-    }
 
-    public void addToLikedNovels(Novel novel) {
-        likeService.addToLikedNovels(novel); // Sử dụng LikeService để thêm vào danh sách yêu thích
-    }
 
-    public void removeFromLikedNovels(Long novelId) {
-        likeService.removeFromLikedNovels(novelId); // Sử dụng LikeService để xóa khỏi danh sách yêu thích
-    }
 
-    public void updateLikedNovel(Long novelId, Novel updatedNovel) {
-        likeService.updateLikedNovel(novelId, updatedNovel); // Sử dụng LikeService để cập nhật danh sách yêu thích
-    }
 }

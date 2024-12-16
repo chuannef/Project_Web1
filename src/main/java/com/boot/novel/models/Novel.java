@@ -30,8 +30,11 @@ public class Novel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private Author author;
+
+    @Column(name = "image")
     private String image;
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "novel", fetch = FetchType.LAZY)
     private List<Chapter> chapters = new ArrayList<>();
 }

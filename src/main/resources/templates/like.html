@@ -15,13 +15,13 @@
             <h2>Tài khoản của<br>CHUẨN HOÀNG</h2>
         </div>
         <ul>
-            <li><a href="#"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="/"><i class="fas fa-home"></i> Trang chủ</a></li>
             <li class="active"><a href="#"><i class="fas fa-book"></i> Truyện theo dõi</a></li>
-            <li><a href="#"><i class="fas fa-gem"></i> Linh Thạch</a></li>
+
             <li><a href="#"><i class="fas fa-comments"></i> Bình luận</a></li>
             <li><a href="#"><i class="fas fa-bell"></i> Thông báo</a></li>
             <li><a href="#"><i class="fas fa-key"></i> Đổi mật khẩu</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Thoát</a></li>
+            <li><a href="/login"><i class="fas fa-sign-out-alt"></i> Thoát</a></li>
         </ul>
     </div>
     <div class="content">
@@ -36,12 +36,15 @@
                 <th>CHAP MỚI NHẤT</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody th:each="likedItem : ${likedItems}">
             <tr>
                 <td>
-                    <img src="https://placehold.co/50x50" alt="Manga cover image">
+                    <img th:each="likedItem : ${likedItems}">
                 </td>
                 <td>
+                    <li th:each="item : ${likedItems}">
+                        Sản phẩm ID: <span th:text="${item}"></span>
+                    </li>
                     <a href="#">Chỉ Biết Chế Tạo Trang Bị Nguyên Rùa, Tôi Bị Đuổi Khỏi Tổ Đội Cấp S</a>
                     <div class="remove">✖Bỏ theo dõi</div>
                 </td>
